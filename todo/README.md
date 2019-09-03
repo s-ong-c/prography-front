@@ -10,4 +10,4 @@
 [X] 부트스트랩 사용 x
 [X] position: absolute 사용 x
 
-![todoApp](./imge/todoApp.png)
+![todoApp](./image/todoApp.png)

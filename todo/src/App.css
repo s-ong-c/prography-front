@@ -31,3 +31,7 @@
     transform: rotate(360deg);
   }
 }
+body {
+  background: #e9ecef;
+  font-family: 'Fira Mono', monospace;
+}

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Form from './Form';
-import useInput from '../lib/hooks/useInput';
 
 const MainTemplateBlock = styled.div`
   width: 512px;
@@ -46,19 +45,23 @@ const MainTemplateBlock = styled.div`
 interface MainTemplateProps {
   addTodoList: (todo: string) => void;
 }
-
+const { useState } = React;
 const MainTemplate: React.SFC<MainTemplateProps> = ({
   addTodoList,
   children,
 }) => {
-  const [todo, onChangeTodo] = useInput('');
+  const [todo, setTodo] = useState('');
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTodo(e.target.value);
+  };
   const onSubmit = (todo: string) => {
     addTodoList(todo);
+    setTodo('');
   };
   return (
     <MainTemplateBlock>
       <div className="wrapper">
-        <Form value={todo} onChange={onChangeTodo} onSubmit={onSubmit} />
+        <Form value={todo} onChange={onChange} onSubmit={onSubmit} />
       </div>
       <div className="contents">{children}</div>
     </MainTemplateBlock>
